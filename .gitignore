@@ -1,0 +1,8 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub/
+build/
+ios/Pods/
+android/.gradle/
+*.lock
