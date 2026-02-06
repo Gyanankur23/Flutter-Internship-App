@@ -3,20 +3,53 @@
   <head>
     <meta charset="UTF-8">
     <title>Flutter Internship App</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+      .screen { display: none; }
+      .active { display: block; }
+      nav button { margin: 5px; padding: 10px 20px; }
+    </style>
     <script src="flutter.js" defer></script>
   </head>
   <body>
+    <h1>Flutter Internship App Demo</h1>
+    <nav>
+      <button onclick="showScreen('login')">Login</button>
+      <button onclick="showScreen('home')">Home</button>
+      <button onclick="showScreen('listing')">Program Listing</button>
+      <button onclick="showScreen('details')">Program Details</button>
+    </nav>
+
+    <div id="login" class="screen active">
+      <h2>Login Screen</h2>
+      <input type="text" placeholder="Email"><br><br>
+      <input type="password" placeholder="Password"><br><br>
+      <button>Login</button>
+    </div>
+
+    <div id="home" class="screen">
+      <h2>Home Screen</h2>
+      <p>Welcome to the dashboard!</p>
+    </div>
+
+    <div id="listing" class="screen">
+      <h2>Program Listing</h2>
+      <ul>
+        <li>Course A – <button>Enroll</button></li>
+        <li>Course B – <button>Enroll</button></li>
+      </ul>
+    </div>
+
+    <div id="details" class="screen">
+      <h2>Program Details</h2>
+      <p>Course syllabus, instructor info, and progress tracking.</p>
+    </div>
+
     <script>
-      window.addEventListener('load', function() {
-        _flutter.loader.loadEntrypoint({
-          entrypointUrl: "main.dart.js",
-          onEntrypointLoaded: function(engineInitializer) {
-            engineInitializer.initializeEngine().then(function(appRunner) {
-              appRunner.runApp();
-            });
-          }
-        });
-      });
+      function showScreen(id) {
+        document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+      }
     </script>
   </body>
 </html>
