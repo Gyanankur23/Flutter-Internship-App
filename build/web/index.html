@@ -1,55 +1,145 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Flutter Internship App</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
-      .screen { display: none; }
-      .active { display: block; }
-      nav button { margin: 5px; padding: 10px 20px; }
-    </style>
-    <script src="flutter.js" defer></script>
-  </head>
-  <body>
-    <h1>Flutter Internship App Demo</h1>
-    <nav>
-      <button onclick="showScreen('login')">Login</button>
-      <button onclick="showScreen('home')">Home</button>
-      <button onclick="showScreen('listing')">Program Listing</button>
-      <button onclick="showScreen('details')">Program Details</button>
-    </nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flutter Internship App Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset & base */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+    }
+    h1 { font-size: 2.2em; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+    nav {
+      margin-bottom: 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav button {
+      background: #00c6ff;
+      background: linear-gradient(45deg,#00c6ff,#0072ff);
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    nav button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .screen {
+      display: none;
+      max-width: 600px;
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      animation: fadeIn 0.4s ease;
+    }
+    .active { display: block; }
+    h2 { margin-bottom: 15px; font-size: 1.6em; }
+    input, button.action {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+      font-size: 1em;
+    }
+    input {
+      background: rgba(255,255,255,0.9);
+      color: #000;
+    }
+    button.action {
+      background: linear-gradient(45deg,#ff512f,#dd2476);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    button.action:hover { opacity: 0.85; }
+    ul { list-style: none; }
+    li {
+      background: rgba(255,255,255,0.1);
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li button {
+      background: linear-gradient(45deg,#56ab2f,#a8e063);
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      color: #fff;
+      cursor: pointer;
+    }
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(10px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Flutter Internship App Demo</h1>
+  <nav>
+    <button onclick="showScreen('login')">Login</button>
+    <button onclick="showScreen('home')">Home</button>
+    <button onclick="showScreen('listing')">Program Listing</button>
+    <button onclick="showScreen('details')">Program Details</button>
+  </nav>
 
-    <div id="login" class="screen active">
-      <h2>Login Screen</h2>
-      <input type="text" placeholder="Email"><br><br>
-      <input type="password" placeholder="Password"><br><br>
-      <button>Login</button>
-    </div>
+  <div id="login" class="screen active">
+    <h2>Login Screen</h2>
+    <input type="text" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button class="action">Login</button>
+  </div>
 
-    <div id="home" class="screen">
-      <h2>Home Screen</h2>
-      <p>Welcome to the dashboard!</p>
-    </div>
+  <div id="home" class="screen">
+    <h2>Home Screen</h2>
+    <p>Welcome to your personalized dashboard. Explore programs, track progress, and grow your skills.</p>
+  </div>
 
-    <div id="listing" class="screen">
-      <h2>Program Listing</h2>
-      <ul>
-        <li>Course A – <button>Enroll</button></li>
-        <li>Course B – <button>Enroll</button></li>
-      </ul>
-    </div>
+  <div id="listing" class="screen">
+    <h2>Program Listing</h2>
+    <ul>
+      <li>Course A <button>Enroll</button></li>
+      <li>Course B <button>Enroll</button></li>
+      <li>Course C <button>Enroll</button></li>
+    </ul>
+  </div>
 
-    <div id="details" class="screen">
-      <h2>Program Details</h2>
-      <p>Course syllabus, instructor info, and progress tracking.</p>
-    </div>
+  <div id="details" class="screen">
+    <h2>Program Details</h2>
+    <p><strong>Course A:</strong> Learn Flutter basics, UI design, and navigation.</p>
+    <p>Instructor: Jane Doe</p>
+    <p>Progress: 20% complete</p>
+    <button class="action">Continue Course</button>
+  </div>
 
-    <script>
-      function showScreen(id) {
-        document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-      }
-    </script>
-  </body>
+  <script>
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
 </html>
