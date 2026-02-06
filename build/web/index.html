@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Flutter Internship App</title>
+    <script src="flutter.js" defer></script>
+  </head>
+  <body>
+    <script>
+      window.addEventListener('load', function() {
+        _flutter.loader.loadEntrypoint({
+          entrypointUrl: "main.dart.js",
+          onEntrypointLoaded: function(engineInitializer) {
+            engineInitializer.initializeEngine().then(function(appRunner) {
+              appRunner.runApp();
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
